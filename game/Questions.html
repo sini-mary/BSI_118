@@ -1,0 +1,81 @@
+{% comment %} 
+
+{% extends "global/Page.html" %}
+
+{% block title %}Survey{% endblock %}
+
+{% block content %}
+
+<p>
+    Please answer the following questions.
+</p>
+
+<form method="post">
+    
+    {{ form.capital_city }}
+    {{ formfield "math_question" }}
+    <input type="button" value="Check Answer" class="btn btn-primary" id="check-answer-button">
+    <input type="submit" value="Next" class="btn btn-primary" id="next-button" style="display: none;">
+
+    <div id="population-question-div" style="display: none;">
+        {{ form.population_question }}
+    </div>
+</form>
+
+<script>
+    document.getElementById("check-answer-button").addEventListener("click", function() {
+        var mathAnswer = parseInt(document.getElementById("id_math_question").value);
+        if (mathAnswer === {{ correct_math_answer }}) {
+            document.getElementById("next-button").style.display = "inline-block";
+            document.getElementById("population-question-div").style.display = "block";
+        } else {
+            alert("Incorrect answer. Please try again.");
+        }
+    });
+</script>
+
+{% endblock %} {% endcomment %}
+{% extends "global/Page.html" %}
+
+{% block title %}Survey{% endblock %}
+
+{% block content %}
+
+<p>
+    Please answer the following questions.
+</p>
+
+<form method="post">
+    <label for="{{ form.capital_city.id_for_label }}" class="control-label">
+        What is the capital city of Kenya?
+    </label>
+    {% for choice in form.capital_city %}
+    <div class="form-check">
+        <input type="radio" id="{{ choice.id_for_label }}" name="{{ form.capital_city.name }}" value="{{ choice.value }}" class="form-check-input">
+        <label class="form-check-label" for="{{ choice.id_for_label }}">{{ choice.label.tag }}</label>
+    </div>
+{% endfor %}
+
+    
+    {{ formfield "math_question" }}
+    <input type="button" value="Check Answer" class="btn btn-primary" id="check-answer-button">
+    <input type="submit" value="Next" class="btn btn-primary" id="next-button" style="display: none;">
+
+    <div id="population-question-div" style="display: none;">
+        {{ form.population_question }}
+    </div>
+</form>
+
+<script>
+    document.getElementById("check-answer-button").addEventListener("click", function() {
+        var mathAnswer = parseInt(document.getElementById("id_math_question").value);
+        if (mathAnswer === {{ correct_math_answer }}) {
+            document.getElementById("next-button").style.display = "inline-block";
+            document.getElementById("population-question-div").style.display = "block";
+        } else {
+            alert("Incorrect answer. Please try again.");
+        }
+    });
+</script>
+
+{% endblock %}
