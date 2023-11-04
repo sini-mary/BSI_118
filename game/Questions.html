@@ -11,9 +11,7 @@
 
 <form method="post">
     {{ form.capital_city }}
-    {{formfields}}
-
-    <label for="math_answer">What is 14+19 ?</label>
+    <label for="math_answer">What is 14+15 ?</label>
     <input type="text" id="math_answer" name="math_answer" class="form-control" placeholder="Enter your answer">
     <input type="button" value="Check Answer" class="btn btn-primary" id="check-answer-button">
 
@@ -37,8 +35,7 @@
         }
     });
 
-    {% comment %} document.getElementById("finish-button").addEventListener("click", function() {
-    }); {% endcomment %}
+   
 </script>
 
 {% endblock %}

@@ -2,10 +2,13 @@ from otree.api import *
 from otree.api import models, BasePlayer, BaseGroup, BaseSubsession, Currency
 
 doc = """
-A Mini Ultimatum Game with 3 players. 
+This is a  game(mini ultimatum) with 3 players. 
+...
 Player 1 endows Ksh 200, sends an amount to Player 2. 
-Player 3, the Punisher, observes and decides to punish or not. 
-Payouts depend on Player 3's choice. An exit survey follows.
+..
+Player 3(the punisher), will decide to punish or not. 
+Payouts depend on Player 3's choice.
+Followed by an exit survey.
 """
 
 
@@ -142,14 +145,14 @@ class Questions(Page):
 
         # Validate the answer for the math_question
         if values['math_question'] != Questions.vars_for_template(player)['correct_math_answer']:
-            errors['math_question'] = 'Incorrect answer. Please enter the correct sum of 14 and 15.'
+         errors['math_question'] = 'Incorrect answer. Please enter the correct sum of 14 and 15.'
 
         return errors
 
-    def before_next_page(self):
+    def before_next_page(self,timeout_happened):
         if self.round_number == 1:
-            # Store the correct math answer for future reference
             self.player.correct_math_answer = self.vars_for_template(self.player)['correct_math_answer']
+        self.before_next_page()
 
 
    

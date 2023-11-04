@@ -1,18 +1,48 @@
 {% block title %}Introduction{% endblock %}
 {% block content %}
 
-    <h2>Welcome to The Mini Ultimatum Game</h2>
+    <div style="text-align: center; padding: 50px;">
+        <h2 style="font-size: 24px; color: #3498db;">Welcome to The Mini Ultimatum Game</h2>
 
-    <p>In this game, you will take on one of the three roles below:</p>
+        <div style="margin: 20px 0; font-size: 18px; color: #e74c3c;">
+            <strong>Player 1:</strong> You have been endowed with Ksh 200 and must decide how much to send to Player 2.
+        </div>
 
-    <p><strong>Player 1:</strong> You have been endowed with Ksh 200 and must decide how much to send to Player 2.</p>
+        <div style="margin: 20px 0; font-size: 18px; color: #e74c3c;">
+            <strong>The Punisher:</strong> You will observe the transaction, what Player 1 has decided to send Player 2. Depending on your judgment, you can choose to "Punish" or "Not Punish" Player 1.
+        </div>
 
-    <p><strong>Player 3 (The Punisher):</strong> You will observe the transaction, what Player 1 has decided to send Player 2. Depending on your judgment, you can choose to "Punish" or "Not Punish" Player 1.</p>
+        <div style="margin: 20px 0; font-size: 18px; color: #e74c3c;">
+            <strong>Player 2:</strong> You will receive an amount from Player 1 depending on The Punisher's decision.
+        </div>
 
-    <p><strong>Player 2:</strong> You will receive an amount from Player 1 depending on The Punisher's decision.</p>
+        <p style="font-size: 16px; color: #3498db;">Remember, your decisions will affect your earnings, so choose wisely!</p>
 
-    <p>Remember, your decisions will affect your earnings, so choose wisely!</p>
+        <a href="#" style="display: inline-block; margin-top: 30px; padding: 10px 20px; font-size: 18px; color: #fff; background-color: #3498db; border: none; border-radius: 5px; text-decoration: none; transition: background-color 0.3s ease-in-out;">
+            {{ next_button }}
+        </a>
+    </div>
 
-    {{ next_button }}
+    <style>
+        /* Button Hover Effect */
+        a:hover {
+            background-color: #2980b9;
+        }
+
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Apply Fade In Animation to the content */
+        div {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
 
 {% endblock %}

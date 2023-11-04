@@ -1,9 +1,25 @@
 {{ block title }}Player 1{{ endblock }}
 {{ block content }}
 
-    <p>You are Player 1. You have been endowed with Ksh 200.</p>
+    <div style="text-align: center; padding: 50px;">
+        <p style="font-size: 18px; color: #3498db;">You are Player 1. You have been endowed with Ksh 200.</p>
 
-    {{ formfields }}
-    {{ next_button }}
+        <form method="post">
+            <div style="margin-bottom: 20px;">
+                <label for="amount_to_send" style="font-size: 16px; color: #333;">Amount to Send:</label>
+                <input type="number" name="amount_to_send" id="amount_to_send" style="padding: 5px; font-size: 16px;">
+            </div>
+
+            <a href="#" style="display: inline-block; padding: 10px 20px; font-size: 16px; color: #fff; background-color: #e74c3c; border: none; border-radius: 5px; text-decoration: none; transition: background-color 0.3s ease-in-out;">
+                {{ next_button }}
+            </a>
+        </form>
+    </div>
+
+    <style>
+        a:hover {
+            background-color: #c0392b;
+        }
+    </style>
 
 {{ endblock }}
