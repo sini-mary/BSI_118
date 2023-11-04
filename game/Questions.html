@@ -1,4 +1,3 @@
-{% comment %} 
 
 {% extends "global/Page.html" %}
 
@@ -7,75 +6,39 @@
 {% block content %}
 
 <p>
-    Please answer the following questions.
+    Please answer the following  questions:
 </p>
 
 <form method="post">
-    
     {{ form.capital_city }}
-    {{ formfield "math_question" }}
+    {{formfields}}
+
+    <label for="math_answer">What is 14+19 ?</label>
+    <input type="text" id="math_answer" name="math_answer" class="form-control" placeholder="Enter your answer">
     <input type="button" value="Check Answer" class="btn btn-primary" id="check-answer-button">
-    <input type="submit" value="Next" class="btn btn-primary" id="next-button" style="display: none;">
 
     <div id="population-question-div" style="display: none;">
-        {{ form.population_question }}
+        <label for="population_answer">What is the population of Kenya?</label>
+        <input type="text" id="population_answer" name="population_answer" class="form-control" placeholder="Enter the population">
     </div>
 </form>
 
+{{next_button}}
 <script>
     document.getElementById("check-answer-button").addEventListener("click", function() {
-        var mathAnswer = parseInt(document.getElementById("id_math_question").value);
-        if (mathAnswer === {{ correct_math_answer }}) {
-            document.getElementById("next-button").style.display = "inline-block";
+        var userMathAnswer = document.getElementById("math_answer").value;
+        var correctMathAnswer = "{{ correct_math_answer }}";
+
+        if (userMathAnswer === correctMathAnswer) {
             document.getElementById("population-question-div").style.display = "block";
+            document.getElementById("finish-button").style.display = "inline-block";
         } else {
-            alert("Incorrect answer. Please try again.");
+            alert("Incorrect math answer. Please try again.");
         }
     });
-</script>
 
-{% endblock %} {% endcomment %}
-{% extends "global/Page.html" %}
-
-{% block title %}Survey{% endblock %}
-
-{% block content %}
-
-<p>
-    Please answer the following questions.
-</p>
-
-<form method="post">
-    <label for="{{ form.capital_city.id_for_label }}" class="control-label">
-        What is the capital city of Kenya?
-    </label>
-    {% for choice in form.capital_city %}
-    <div class="form-check">
-        <input type="radio" id="{{ choice.id_for_label }}" name="{{ form.capital_city.name }}" value="{{ choice.value }}" class="form-check-input">
-        <label class="form-check-label" for="{{ choice.id_for_label }}">{{ choice.label.tag }}</label>
-    </div>
-{% endfor %}
-
-    
-    {{ formfield "math_question" }}
-    <input type="button" value="Check Answer" class="btn btn-primary" id="check-answer-button">
-    <input type="submit" value="Next" class="btn btn-primary" id="next-button" style="display: none;">
-
-    <div id="population-question-div" style="display: none;">
-        {{ form.population_question }}
-    </div>
-</form>
-
-<script>
-    document.getElementById("check-answer-button").addEventListener("click", function() {
-        var mathAnswer = parseInt(document.getElementById("id_math_question").value);
-        if (mathAnswer === {{ correct_math_answer }}) {
-            document.getElementById("next-button").style.display = "inline-block";
-            document.getElementById("population-question-div").style.display = "block";
-        } else {
-            alert("Incorrect answer. Please try again.");
-        }
-    });
+    {% comment %} document.getElementById("finish-button").addEventListener("click", function() {
+    }); {% endcomment %}
 </script>
 
 {% endblock %}
