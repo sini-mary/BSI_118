@@ -23,7 +23,7 @@ Clone the repository:
 
 Copy
 ```
-git clone https://github.com/your/repository.git
+github.com/sini-mary/BSI_118.git
 ```
 
 Install the dependencies:
