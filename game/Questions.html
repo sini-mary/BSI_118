@@ -6,12 +6,12 @@
 {% block content %}
 
 <p>
-    Please answer the following  questions:
+    This is an exit survey, answer the following  questions:
 </p>
 
 <form method="post">
     {{ form.capital_city }}
-    <label for="math_answer">What is 14+15 ?</label>
+    <label for="math_answer">What is 14+15 ? <h6>Please Note! You wont be able to move to the next question, provided the answer is incorrect.</h6></label>
     <input type="text" id="math_answer" name="math_answer" class="form-control" placeholder="Enter your answer">
     <input type="button" value="Check Answer" class="btn btn-primary" id="check-answer-button">
 
